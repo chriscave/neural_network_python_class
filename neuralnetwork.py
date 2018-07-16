@@ -28,25 +28,4 @@ class NeuralNetwork:
 
 
 
-hl = np.array([2,3])
-X = np.array([[1,2,3,4],[5,6,7,8], [9,10,11,12]])
-y = np.array([1,0,0])
-n,m = X.shape
-m = np.array([m])
-theta = itheta(m,hl)
 
-rowct, colct = db(theta)
-
-a = act(X,theta)
-
-r = len(rowct)
-num_iters = 500
-#print(np.arange(num_iters))
-#theta, Cost_history = TrainDNN(X,y,hl,0.03,1,500)
-DNN = NeuralNetwork(hl,0.03,200,1)
-
-#print(DNN.__dict__)
-DNN.fit(X,y)
-
-
-print(DNN.weights)
