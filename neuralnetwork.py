@@ -23,9 +23,3 @@ class NeuralNetwork:
 		theta = itheta(self.features,self.hiddenLayers)
 		self.weights, self.costHistory = TrainDNN(X, y, self.hiddenLayers,self.learningRate,self.reg,self.numIters)
 
-
-	
-
-
-
-

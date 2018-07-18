@@ -9,7 +9,6 @@ def TrainDNN(X,y,hl,alpha,gamma,num_iters):
 	n,m = X.shape
 	m = np.array([m])
 	theta = itheta(m,hl)
-	rowct, colct = db(theta)
 	Cost_history = np.zeros(num_iters)
 	for i in np.arange(num_iters):
 		D = BackProp(X,y,theta,gamma)
