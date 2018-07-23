@@ -1,12 +1,8 @@
 import numpy as np 
-from scipy.linalg import block_diag
-from decomp_bdiag import decomp_bdiag as db
 from activation import activation as act
-from initalize_theta import initalize_theta as itheta
-from cost import cost as cost
-from BackPropagation import BackProp as BackProp
-from BackPropagation import GradientChecking as GradientChecking
 from TrainDNN import TrainDNN as TrainDNN
+from activation import sigmoid as sigmoid
+from cost import cost as cost
 	
 class NeuralNetwork:
 	
@@ -18,8 +14,15 @@ class NeuralNetwork:
 
 	def fit(self, X,y):
 		n,m = X.shape
+		y = np.matrix(y)
 		self.features = np.array([m])
 		self.amountOfExamples = np.array([n])
-		theta = itheta(self.features,self.hiddenLayers)
 		self.weights, self.costHistory = TrainDNN(X, y, self.hiddenLayers,self.learningRate,self.reg,self.numIters)
+
+	def prob_predict(self,X):
+		return act(X,self.weights)[-1]
+	
+	def predict(self,X):
+		a = self.prob_predict(X)
+		return np.array([1 if a[0][i] > 0.5 else 0 for i in np.arange(len(a[0]))])
 

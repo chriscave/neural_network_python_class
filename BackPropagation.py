@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.linalg import block_diag
-from decomp_bdiag import decomp_bdiag as db
 from activation import activation as act
 from cost import cost as cost
 
@@ -40,10 +39,3 @@ def GradientChecking(X,y,theta,gamma,epsilon):
 				D_approx[k][i,j] = (1 / (2 * epsilon)) *  (cost(X,y,theta + eps, 1) - cost(X,y,theta -eps,1))
 				eps[k][i,j] = 0
 	return D_approx
-
-
-
-
-if __name__ == "__main__":
-    import sys
-    BackProp(int(sys.argv[1]))
